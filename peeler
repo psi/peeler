@@ -16,6 +16,6 @@ tracks.sort_by(&:rand).each do |track|
   out_file = "#{output_dir}/#{title}.mp3"
 
   unless File.exists?(out_file)
-    system "wget -O #{output_dir}/#{title}.mp3 http://soundcloud.com#{download_url}"
+    system "wget -O #{out_file} http://soundcloud.com#{download_url}"
   end
 end
