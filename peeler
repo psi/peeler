@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+require "open-uri"
+require "nokogiri"
+
+output_dir = "/Volumes/Data/peel"
+
+set_url = "http://soundcloud.com/das-boy/sets/john-peel-show"
+
+doc = Nokogiri::HTML(open(set_url))
+
+tracks = doc.css('ol.tracks li .actions a.download')
+
+tracks.sort_by(&:rand).each do |track|
+  download_url = track["href"]
+  title = download_url.split('/')[2]
+  out_file = "#{output_dir}/#{title}.mp3"
+
+  unless File.exists?(out_file)
+    system "wget -O #{output_dir}/#{title}.mp3 http://soundcloud.com#{download_url}"
+  end
+end

@@ -1,0 +1,10 @@
+GEM
+  remote: http://gems.rubyforge.org/
+  specs:
+    nokogiri (1.5.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  nokogiri
